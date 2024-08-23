@@ -18,22 +18,27 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         
         <!-- Spring Boot Starter Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- Spring Boot Starter Tomcat (optional, for embedded Tomcat) -->
-        <!-- Remove if deploying to an external Tomcat server -->
+        <!-- Spring Boot Starter Tomcat (provided scope for external server) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${spring-boot.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Other dependencies -->
+        <!-- Add other dependencies here if needed -->
     </dependencies>
 
     <build>
