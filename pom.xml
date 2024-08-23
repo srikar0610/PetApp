@@ -32,10 +32,13 @@
         </plugins>
     </build>
 
+    <!-- Remove any custom repositories if authentication issues persist -->
+    <!--
     <repositories>
         <repository>
             <id>spring-repo</id>
             <url>https://repo.spring.io/release</url>
         </repository>
     </repositories>
+    -->
 </project>
