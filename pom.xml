@@ -6,8 +6,6 @@
     <groupId>org.springframework.samples</groupId>
     <artifactId>spring-petclinic-rest</artifactId>
     <version>3.2.1</version>
-
-    <!-- Change packaging type to war -->
     <packaging>war</packaging>
 
     <description>REST version of the Spring Petclinic sample application</description>
@@ -21,26 +19,31 @@
     </parent>
 
     <properties>
-        <!-- Third-party libraries -->
         <spring-data-jdbc.version>1.2.1.RELEASE</spring-data-jdbc.version>
         <springdoc-openapi-ui.version>2.0.2</springdoc-openapi-ui.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <jaxb-api.version>2.3.0</jaxb-api.version>
-
-        <!-- Maven plugins -->
         <jacoco.version>0.8.11</jacoco.version>
         <openapi-generator-maven-plugin.version>6.3.0</openapi-generator-maven-plugin.version>
         <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
-
-        <!-- Docker -->
         <docker.jib-maven-plugin.version>3.4.0</docker.jib-maven-plugin.version>
         <docker.image.prefix>springcommunity</docker.image.prefix>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
 
     <dependencies>
-        <!-- Your dependencies here -->
+        <!-- Spring Boot Starter Web for WAR packaging -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Tomcat 9 dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -50,11 +53,19 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <!-- Add mainClass configuration to specify the main class if needed -->
                     <mainClass>org.springframework.samples.petclinic.PetClinicApplication</mainClass>
                 </configuration>
             </plugin>
-            <!-- Other plugins -->
+
+            <!-- Maven WAR Plugin to ensure WAR file generation -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
